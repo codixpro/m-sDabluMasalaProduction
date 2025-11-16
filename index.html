@@ -1,11 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M/S DabluMasalaProduction</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dablu Masala Production</title>
+  <link rel="stylesheet" href="style.css" />
+
+ <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f8f8f8;
+  color: #fff;
+}
+
+/* HEADER */
+header {
+  background: #1c1c1c;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Box (image + text) */
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Logo Image */
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;   /* remove this if logo is not round */
+  border: 2px solid #ff7a00;
+}
+
+/* Logo Text */
+.logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* NAV LINKS */
+nav a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn {
+  padding: 10px 20px;
+  background: #ff7a00;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn, .btn-sm {
+  background: linear-gradient(45deg, #ff7a00, #ff9500);
+  box-shadow: 0 5px 12px rgba(255,122,0,0.4);
+  transition: .3s;
+}
+
+.btn:hover, .btn-sm:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(255,122,0,0.6);
+}
+
+
+/* HERO */
+.hero {
+  height: 90vh;
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(255,122,0,0.4)), 
+              url('mshero.png') center/cover no-repeat;
+  animation: fadeInHero 1.5s ease-in-out;
+
+   justify-content: center;   /* ← Horizontal center */
+  align-items: center;        /* ← Vertical center */
+  text-align: center;  
+}
+
+@keyframes fadeInHero {
+  from { opacity: 0; transform: scale(1.04);}
+  to   { opacity: 1; transform: scale(1);}
+}
+
+
+.hero-text h1 {
+  font-size: 40px;
+}
+.hero-text p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* COMPANY INTRO */
+.company {
+  padding: 70px 60px;
+  background: linear-gradient(135deg, #1a1a1a, #111);
+  color: #fff;
+  text-align: center;
+  border-top: 2px solid rgba(255,122,0,0.3);
+  border-bottom: 2px solid rgba(255,122,0,0.3);
+  box-shadow: inset 0 0 40px rgba(255,122,0,0.1);
+  position: relative;
+}
+
+/* Heading */
+.company h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #ff7a00;
+  text-shadow: 0 0 10px rgba(255,122,0,0.5);
+}
+
+/* Paragraph */
+.company p {
+  font-size: 17px;
+  line-height: 29px;
+  max-width: 900px;
+  margin: auto;
+  color: #efefef;
+  opacity: 0.95;
+}
+
+/* Soft Glow Background Gradient Effect */
+.company::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 60%;
+  height: 100%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(255,122,0,0.15), transparent 70%);
+  pointer-events: none;
+}
+
+
+
+/* CREATIONS */
+.creations {
+  background: #1e1e1e;
+  padding: 50px 60px;
+}
+
+.creations span {
+  color: #ff7a00;
+}
+
+.creation-cards {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* Card Style */
+.card {
+  border: 2px solid #ff7a00;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+ background: #111;
+  border: 2px solid #ff7a00;
+  box-shadow: 0 0 12px rgba(255,122,0,0.2);
+  transition: .3s;
+}
+
+.card:hover {
+ transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,122,0,0.5);
+}
+
+/* Card Image */
+.card-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.4));
+}
+
+.btn-sm {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #ff7a00;
+  border: none;
+  color: white;
+  border-radius: 4px;
+}
+
+/* Horizontal Scrollable Gallery */
+.gallery {
+  padding: 60px 40px;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+  color: #fff;
+  text-align: center;
+  border-top: 2px solid #ff7a00;
+  border-bottom: 2px solid rgba(255,122,0,0.3);
+}
+
+.gallery h3 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-shadow: 0 0 10px rgba(255,122,0,0.4);
+  color: #ff7a00;
+}
+
+.gallery p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* MAIN HORIZONTAL SCROLL */
+.gallery-scroll {
+    height: 250px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome/Safari */
+.gallery-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb {
+  background: #ff7a00;
+  border-radius: 10px;
+}
+
+/* IMAGES */
+.gallery-scroll img {
+  width: 260px;
+  height: 180px;
+  margin: 40px 0px 0px 30px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ff7a00;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.gallery-scroll img:hover {
+    
+  transform: rotate(-2deg) scale(1.08);
+}
+
+/* Horizontal Scrollable Gallery (Scrollbar Hidden) */
+.gallery-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+
+  /* Hide scrollbar for all browsers */
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+
+.gallery-scroll::-webkit-scrollbar {
+  display: none;              /* Chrome, Safari */
+}
+
+/* Footer Base */
+footer {
+  background: linear-gradient(135deg, #484646, #000);
+  backdrop-filter: blur(4px);
+  border-top: 2px solid #ff7a00;
+  padding: 50px 60px;
+  color: #fff;
+}
+
+/* 2 Column Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Footer Left (Logo + Text Side by Side) */
+.footer-left {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Footer Logo */
+.footer-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ff7a00;
+}
+
+/* Footer Headings */
+footer h3, footer h4 {
+  color: #ff7a00;
+  margin-bottom: 8px;
+}
+
+/* Contact Form */
+footer input,
+footer textarea {
+  width: 70%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+#contactForm {
+  display: flex;
+  flex-direction: column; /* items vertically */
+  gap: 10px;
+}
+
+#contactForm button {
+  align-self: flex-start; /* button left side */
+}
+
+
+footer button {
+  background: #ff7a00;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+}
+
+/* Mobile Responsive */
+@media(max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-left {
+    flex-direction: column;
+    text-align: center;
+  }
+
+    .footer-left-right{
+        display: block;
+    }
+  .footer-logo {
+    margin: 0 auto;
+  }
+}
+
+/* Social Icons Row */
+.social-icons {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Icon Size */
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: 0.3s ease;
+  filter: brightness(0.5) invert(1); /* white icons */
+  border-radius: 50%;
+}
+
+/* Hover Effect */
+.social-icons img:hover {
+  transform: scale(1.15);
+    border-radius: 50%;
+      filter: drop-shadow(0 0 10px #ff7a00) brightness(1.5);
+}
+
+ </style>
+
 </head>
 <body>
+
+  <!-- HEADER -->
+<header>
+  <div class="logo-box">
+    <img src="mslogo.png" alt="Dablu Masala Logo" class="logo-img" />
+    <span class="logo-text">M/s. Dablu Masala Production</span>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#Products">Products</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact" class="btn">Contact</a>
+  </nav>
+</header>
+
+
+  <!-- HERO SECTION -->
+  <section class="hero">
     
+  </section>
+
+  <!-- COMPANY INTRO -->
+  <section class="company">
+    <h2>Company Short Intro</h2>
+    <p>
+      Dablu Masala aapke rasoi ka asli saathi — hum laate hain woh khushboo aur swaad jo ghar ka khana aur bhi khaas bana de.
+Har masala ko pure ingredients, hygienic grinding aur quality testing ke baad pack kiya jata hai.
+Hamara mission hai: Premium masale, saste daam, aur 100% desi taste.
+    </p>
+  </section>
+
+  <!-- OUR STAR CREATIONS -->
+  <section class="creations" id="Products">
+    <h2>Our Star <span>Products</span></h2>
+
+    <div class="creation-cards">
+    <div class="card">
+  <img src="garam-removebg-preview.png" alt="Garam Masala" class="card-img">
+
+  <h3>GARAM MASALA</h3>
+  <p>Great mixture for enhancing all dishes.</p>
+
+  <button class="btn-sm">Read More</button>
+</div>
+
+
+     <div class="card">
+  <img src="redchili-removebg-preview.png" alt="Garam Masala" class="card-img">
+
+  <h3>RED CHILLI</h3>
+  <p>Great mixture for enhancing all dishes.</p>
+
+  <button class="btn-sm">Read More</button>
+</div>
+
+
+      <div class="card">
+  <img src="meatmasala-removebg-preview.png" alt="Garam Masala" class="card-img">
+
+  <h3>MEAT  MASALA</h3>
+  <p>Great mixture for enhancing all dishes.</p>
+
+  <button class="btn-sm">Read More</button>
+</div>
+
+
+      <div class="card">
+  <img src="haldi-removebg-preview.png" alt="Garam Masala" class="card-img">
+
+  <h3>HALDI POWDER</h3>
+  <p>Great mixture for enhancing all dishes.</p>
+
+  <button class="btn-sm">Read More</button>
+</div>
+
+  </section>
+
+  <!-- GALLERY SECTION -->
+<section class="gallery" id="gallery">
+  <h3>Gallery</h3>
+  <p>Our Glimpse Into Us or Certified Quality</p>
+
+  <div class="gallery-scroll">
+    <img src="MSCER.jpg" />
+    <img src="MSCER.jpg" />
+    <img src="MSCER.jpg" />
+    <img src="MSCER.jpg" />
+    <img src="MSCER.jpg" />
+    <img src="MSCER.jpg" />
+  </div>
+</section>
+
+
+  <!-- FOOTER -->
+  <footer id="contact">
+  <div class="footer-grid">
+
+    <!-- LEFT SIDE - Logo + Info -->
+    <div class="footer-left">
+      <img src="mslogo.png" class="footer-logo" alt="Dablu Masala Logo">
+
+            <div class="footer-left-right">
+                 <div>
+        <h3>The Dablu Masala Promise</h3>
+        <p>100% Pure · Hygienic Process · Premium Quality · FSSAI Certified</p>
+
+        <h4>Contact:</h4>
+        <p>+60013 4307 40<br>+60094 020 336</p>
+
+        <p>Email: testbusiness428@gmail.com</p>
+      </div>
+      <!-- SOCIAL ICONS -->
+    <div class="social-icons">
+      <a href="#"><img src="instagram.png" alt="instagram"></a>
+      <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="youtube.png" alt="YouTube"></a>
+      <a href="#"><img src="whatsapp.png" alt="WhatsApp"></a>
+    </div>
+            </div>
+    </div>
+
+    <!-- RIGHT SIDE - Contact Form -->
+    <div>
+      <h3>Quick Lines</h3>
+      <form id="contactForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Message" required></textarea>
+        <button class="btn-sm">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</footer>
 </body>
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  alert("Your message has been sent!");
+});
+
+</script>
 </html>
